@@ -41,8 +41,9 @@ func main() {
 
 	s := grpc.NewServer()
 	calculator.RegisterCalculatorServer(s, &calculatorServer{})
-	if err := s.Serve(listen); err != nil {
+	fmt.Println("Server is running on port 50051")
+	err = s.Serve(listen)
+	if err != nil {
 		log.Fatalf("Failed to server: %v", err)
 	}
-	fmt.Println("Server is running on port 50051")
 }
