@@ -27,3 +27,8 @@ func (s *calculatorServer) Multiply(ctx context.Context, req *calculator.Multipl
 	result := req.Num1 * req.Num2
 	return &calculator.Response{Response: result}, nil
 }
+
+func (s *calculatorServer) Divide(ctx context.Context, req *calculator.DivideRequest) (*calculator.Response, error) {
+	result := req.Num1 / req.Num2
+	return &calculator.Response{Response: result}, nil
+}
