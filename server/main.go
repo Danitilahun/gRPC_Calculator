@@ -12,3 +12,8 @@ import (
 type calculatorServer struct {
 	calculator.UnimplementedCalculatorServer
 }
+
+func (s *calculatorServer) Add(ctx context.Context, req *calculator.AddRequest) (*calculator.Response, error) {
+	result := req.Num1 + req.Num2
+	return &calculator.Response{Response: result}, nil
+}
