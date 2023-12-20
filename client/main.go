@@ -16,4 +16,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("Could not connect to server: %v", err)
 	}
+
+	defer conn.Close()
+
+	client := calculator.NewCalculatorClient(conn)
+
 }
