@@ -32,3 +32,17 @@ func (s *calculatorServer) Divide(ctx context.Context, req *calculator.DivideReq
 	result := req.Num1 / req.Num2
 	return &calculator.Response{Response: result}, nil
 }
+
+func main() {
+	listen, err := net.Listen("tcp", ":50051")
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
+	}
+
+	s := grpc.NewServer()
+	calculator.RegisterCalculatorServer(s, &calculatorServer{})
+	if err := s.Serve(listen); err != nil {
+		log.Fatalf("Failed to server: %v", err)
+	}
+	fmt.Println("Server is running on port 50051")
+}
