@@ -22,3 +22,8 @@ func (s *calculatorServer) Subtract(ctx context.Context, req *calculator.Subtrac
 	result := req.Num1 - req.Num2
 	return &calculator.Response{Response: result}, nil
 }
+
+func (s *calculatorServer) Multiply(ctx context.Context, req *calculator.MultiplyRequest) (*calculator.Response, error) {
+	result := req.Num1 * req.Num2
+	return &calculator.Response{Response: result}, nil
+}
